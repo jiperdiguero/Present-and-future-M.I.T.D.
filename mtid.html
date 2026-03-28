@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M.I.T.D. - Presentación Ejecutiva</title>
+    <!-- Fuentes modernas estilo Canva (Google Fonts) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #0B0F19; /* Fondo oscuro elegante */
+            --primary: #00D4FF; /* Cian eléctrico para acentos */
+            --secondary: #1E3A8A; /* Azul profundo */
+            --accent: #10B981; /* Verde esmeralda para éxito/ROI */
+            --warning: #FBBF24; /* Amarillo ámbar para alertas */
+            --text-main: #F8FAFC; /* Blanco roto para lectura */
+            --text-muted: #94A3B8; /* Gris azulado para secundario */
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-main);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Fondos decorativos fijos */
+        .bg-shape {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(100px);
+            z-index: -1;
+            opacity: 0.3;
+        }
+        .shape-1 { background: var(--secondary); width: 500px; height: 500px; top: -100px; right: -150px; }
+        .shape-2 { background: rgba(0, 212, 255, 0.2); width: 400px; height: 400px; bottom: 10%; left: -100px; }
+
+        /* Contenedor principal de secciones */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Secciones base (reemplaza a las slides) */
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 100px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Tipografía común */
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+        
+        h1 span { color: var(--primary); }
+        
+        h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        p {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        /* Elementos decorativos */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            align-self: flex-start;
+            white-space: nowrap;
+        }
+
+        .badge-solid {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #fff;
+        }
+
+        /* Layouts específicos */
+        .split-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        /* Tarjetas de alto impacto */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 40px 30px;
+            transition: transform 0.3s, background 0.3s;
+        }
+        
+        .info-card:hover { 
+            transform: translateY(-5px); 
+            border-color: rgba(0, 212, 255, 0.3);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .info-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .info-card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text-main);
+        }
+
+        .info-card p { font-size: 1.1rem; }
+
+        /* Estilos ROI */
+        .table-roi {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 40px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .table-roi th, .table-roi td {
+            padding: 25px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 1.2rem;
+        }
+        
+        .table-roi th { color: var(--primary); font-family: 'Outfit', sans-serif; text-transform: uppercase; font-size: 1rem; letter-spacing: 1px; }
+        .table-roi .highlight { color: var(--accent); font-weight: 700; font-size: 1.4rem; }
+
+        /* Cajas de Alerta / Casos Específicos */
+        .alert-box {
+            background: rgba(255, 0, 0, 0.05); 
+            padding: 40px; 
+            border-radius: 16px; 
+            border: 1px dashed rgba(255, 80, 80, 0.3);
+        }
+        
+        .effect-box {
+            background: rgba(251, 191, 36, 0.05); 
+            border: 1px solid rgba(251, 191, 36, 0.3); 
+            padding: 30px; 
+            border-radius: 12px; 
+            margin-top: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .effect-box::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 4px; height: 100%;
+            background: var(--warning);
+        }
+
+        /* Indicador de Scroll */
+        .scroll-down {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-muted);
+            font-family: 'Outfit';
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-down i { font-size: 1.5rem; color: var(--primary); }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+            40% { transform: translateY(-10px) translateX(-50%); }
+            60% { transform: translateY(-5px) translateX(-50%); }
+        }
+
+        /* Roadmap Footer */
+        .roadmap-footer {
+            margin-top: 80px; 
+            padding: 60px; 
+            background: rgba(255,255,255,0.02);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+        }
+
+        /* Responsive básico */
+        @media (max-width: 968px) {
+            .split-layout { grid-template-columns: 1fr; gap: 40px; }
+            .card-grid { grid-template-columns: 1fr; }
+            h1 { font-size: 2.8rem; }
+            section { padding: 80px 0; min-height: auto; }
+            .scroll-down { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Fondos decorativos -->
+    <div class="bg-shape shape-1"></div>
+    <div class="bg-shape shape-2"></div>
+
+    <div class="container">
+
+        <!-- SECCIÓN 1: PORTADA -->
+        <section id="inicio">
+            <div class="badge"><i class="fa-solid fa-microchip"></i> Framework M.I.T.D.</div>
+            <h1 style="font-size: 5rem; margin-top: 20px;">Modernización Segura<br>de <span>Sistemas Legacy</span></h1>
+            <h2 style="font-size: 2rem; margin-top: 20px; color: var(--text-main);">Arquitectura de Inferencia Estática y Gemelos Digitales</h2>
+            
+            <p style="max-width: 700px; margin-top: 30px; font-size: 1.25rem;">
+                Transicionando sistemas críticos de gran escala hacia arquitecturas de microservicios, eliminando la opacidad y garantizando el cumplimiento normativo.
+            </p>
+
+            <div style="margin-top: 50px;">
+                <p style="font-family: 'Outfit'; font-size: 1rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px;">Diseñado estratégicamente para:</p>
+                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                    <span class="badge badge-solid"><i class="fa-solid fa-building-columns"></i> Entidades Bancarias</span>
+                    <span class="badge badge-solid"><i class="fa-solid fa-car-burst"></i> Compañías de Seguros</span>
+                    <span class="badge badge-solid"><i class="fa-solid fa-landmark-dome"></i> Organismos de Estado</span>
+                </div>
+            </div>
+
+            <div class="scroll-down">
+                <span>Descubrir Más</span>
+                <i class="fa-solid fa-arrow-down"></i>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: EL PROBLEMA (OPACIDAD) -->
+        <section id="problema">
+            <div class="split-layout">
+                <div>
+                    <div class="badge"><i class="fa-solid fa-triangle-exclamation"></i> El Desafío</div>
+                    <h1>El Riesgo de la <br><span>Opacidad Técnica</span></h1>
+                    <p>
+                        Modernizar sistemas críticos no puede depender del <strong>"conocimiento tribal"</strong> o de manuales desactualizados. 
+                    </p>
+                    <p>
+                        El uso histórico de alias técnicos crípticos oculta el impacto real sobre el negocio, generando un riesgo inaceptable ante organismos de control (como la SSN o el BCRA) al momento de auditar o refactorizar.
+                    </p>
+                </div>
+                <div class="alert-box">
+                    <i class="fa-solid fa-bug" style="font-size: 3rem; color: #EF4444; margin-bottom: 20px;"></i>
+                    <h3 style="font-family:'Outfit'; font-size: 1.8rem; margin-bottom: 15px; color: #fff;">Migración Basada en Supuestos</h3>
+                    <ul style="list-style: none; color: var(--text-muted); line-height: 2.2; font-size: 1.1rem;">
+                        <li><i class="fa-solid fa-xmark" style="color: #EF4444; margin-right: 15px;"></i> Alta tasa de error humano.</li>
+                        <li><i class="fa-solid fa-xmark" style="color: #EF4444; margin-right: 15px;"></i> Imposibilidad de trazabilidad exacta.</li>
+                        <li><i class="fa-solid fa-xmark" style="color: #EF4444; margin-right: 15px;"></i> Riesgo de penalidad regulatoria.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: SEGURIDAD Y PRIVACY BY DESIGN -->
+        <section id="seguridad">
+            <div style="text-align: center;">
+                <div class="badge" style="margin: 0 auto 20px auto;"><i class="fa-solid fa-shield-halved"></i> Eje Estratégico</div>
+                <h1>Seguridad y <span>Cumplimiento Normativo</span></h1>
+                <p style="max-width: 800px; margin: 0 auto;">Diseñado para superar auditorías en sectores de alta regulación. La seguridad no es un módulo adicional, es el diseño central del motor analítico.</p>
+            </div>
+            
+            <div class="card-grid">
+                <div class="info-card">
+                    <i class="fa-solid fa-server"></i>
+                    <h3>Aislamiento Air-Gapped</h3>
+                    <p>Procesamiento 100% local. El código y los datos transaccionales de clientes jamás se exponen a redes externas o nubes públicas.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fa-solid fa-brain"></i>
+                    <h3>Cero Alucinaciones IA</h3>
+                    <p>Se prescinde de agentes de IA autónomos (LLMs) para la inferencia de la lógica crítica. Análisis estático <strong>determinístico</strong> basado en evidencia pura.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fa-solid fa-file-signature"></i>
+                    <h3>Privacy by Design</h3>
+                    <p>Las trazas generadas documentan la estructura, no el dato personal, asegurando el cumplimiento estricto con las regulaciones vigentes.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 4: EL GEMELO DIGITAL Y EL EFECTO CASCADA -->
+        <section id="gemelo-digital">
+            <div class="split-layout">
+                <div>
+                    <div class="badge"><i class="fa-solid fa-network-wired"></i> Evidencia Empírica</div>
+                    <h1 style="font-size: 3.5rem;">El <span>Gemelo Digital</span> Auditable</h1>
+                    <p>En lugar de análisis estáticos superficiales, M.I.T.D. construye un Gemelo Digital en PostgreSQL que centraliza la verdad semántica del negocio de forma determinística.</p>
+                    
+                    <div class="effect-box">
+                        <h4 style="color: var(--warning); font-family: 'Outfit'; font-size: 1.4rem; margin-bottom: 12px;">
+                            <i class="fa-solid fa-bolt" style="margin-right: 8px;"></i> El Efecto Cascada: PAG-IMPORTE
+                        </h4>
+                        <p style="font-size: 1.1rem; color: #fff; margin-bottom: 0;">
+                            Un cambio en apariencia inofensivo y simple, como ampliar el rango de un campo de <strong>(N9,2) a (N11,2)</strong>, propaga un conjunto de impactos ocultos a través de cientos de programas, pantallas y reportes, afectando a gran parte de la organización. 
+                        </p>
+                        <p style="font-size: 1.1rem; color: #fff; margin-top: 10px; margin-bottom: 0;">
+                            <strong>M.I.T.D. traza y detecta el 100% de esta onda expansiva al instante</strong>, antes de que se convierta en una falla crítica en producción.
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <div style="background: rgba(0, 212, 255, 0.05); padding: 50px; border-radius: 16px; border: 1px solid rgba(0, 212, 255, 0.2);">
+                        <h3 style="font-family:'Outfit'; color: var(--primary); margin-bottom: 30px; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 1px;">Resultados en Tiempo Real</h3>
+                        <div style="display: flex; flex-direction: column; gap: 30px;">
+                            <div>
+                                <span style="font-family: 'Outfit'; font-size: 3.5rem; font-weight: 800; color: #FFF; display: block; line-height: 1;">789</span>
+                                <span style="color: var(--text-muted); font-size: 1.2rem;">Objetos Únicos Identificados</span>
+                            </div>
+                            <div style="height: 1px; background: rgba(255,255,255,0.1);"></div>
+                            <div>
+                                <span style="font-family: 'Outfit'; font-size: 3.5rem; font-weight: 800; color: #FFF; display: block; line-height: 1;">1.422</span>
+                                <span style="color: var(--text-muted); font-size: 1.2rem;">Impactos de Datos con Trazabilidad JSON exacta</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 5: ROI Y FACTIBILIDAD -->
+        <section id="roi">
+            <div class="badge"><i class="fa-solid fa-chart-line"></i> Factibilidad y Retorno</div>
+            <h1>Optimización de <span>Recursos (ROI)</span></h1>
+            <p style="max-width: 800px;">Análisis comparativo de factibilidad para un corpus legacy representativo de 4.5 millones de líneas de código (LoC).</p>
+
+            <table class="table-roi">
+                <thead>
+                    <tr>
+                        <th>Métrica Clave</th>
+                        <th>Abordaje Manual (Heurístico)</th>
+                        <th>Arquitectura M.I.T.D.</th>
+                        <th>Optimización Industrial</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Tiempo Estimado</strong></td>
+                        <td>24 Meses (14.400 hs/h)</td>
+                        <td>Menos de 3 Meses</td>
+                        <td class="highlight"><i class="fa-solid fa-arrow-trend-down" style="font-size: 1rem; margin-right: 8px;"></i> 85%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Costo Operativo</strong></td>
+                        <td>USD 700.000</td>
+                        <td>USD 125.000</td>
+                        <td class="highlight"><i class="fa-solid fa-arrow-trend-down" style="font-size: 1rem; margin-right: 8px;"></i> 80%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Confiabilidad</strong></td>
+                        <td>Sujeto a margen de error humano</td>
+                        <td>Evidencia Directa del Código</td>
+                        <td style="color: var(--primary); font-weight: 700; font-size: 1.2rem;">ERROR CERO</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- SECCIÓN 6: CONCLUSION Y ROADMAP -->
+        <section id="conclusion" style="padding-bottom: 150px;">
+            <div style="text-align: center;">
+                <div class="badge" style="margin: 0 auto 20px auto;"><i class="fa-solid fa-flag-checkered"></i> Conclusión</div>
+                <h1 style="font-size: 4rem; max-width: 1000px; margin: 20px auto;">Hacia una Modernización <br><span>Industrializada</span></h1>
+                <p style="max-width: 800px; margin: 0 auto 40px auto; font-size: 1.3rem;">
+                    La arquitectura M.I.T.D. devuelve la <strong>Soberanía Tecnológica</strong> a la organización. Centralizar el conocimiento semántico de forma determinística elimina los riesgos de refactorización hacia microservicios.
+                </p>
+                
+                <div style="display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px;">
+                    <div style="display: flex; align-items: center; gap: 12px; color: var(--text-main); font-weight: 500; font-size: 1.2rem;">
+                        <i class="fa-solid fa-circle-check" style="color: var(--primary); font-size: 1.8rem;"></i> Auditoría Garantizada
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px; color: var(--text-main); font-weight: 500; font-size: 1.2rem;">
+                        <i class="fa-solid fa-circle-check" style="color: var(--primary); font-size: 1.8rem;"></i> Aislamiento Sensible
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px; color: var(--text-main); font-weight: 500; font-size: 1.2rem;">
+                        <i class="fa-solid fa-circle-check" style="color: var(--primary); font-size: 1.8rem;"></i> Escalabilidad Segura
+                    </div>
+                </div>
+            </div>
+
+            <!-- Roadmap Expansion -->
+            <div class="roadmap-footer">
+                <div class="badge" style="background: rgba(16, 185, 129, 0.1); color: var(--accent); margin: 0 auto 20px auto;"><i class="fa-solid fa-rocket"></i> El Futuro del Framework</div>
+                <h3 style="font-family: 'Outfit'; font-size: 2.5rem; margin-bottom: 20px; color: #fff;">Próxima Expansión de Ecosistemas</h3>
+                <p style="font-size: 1.25rem; max-width: 700px; margin: 0 auto;">
+                    La metodología M.I.T.D., probada exitosamente en entornos Natural/Adabas, extenderá muy pronto sus capacidades de análisis estático y gemelos digitales a otros sistemas <strong>Core Legacy</strong>, incluyendo:
+                </p>
+                <div style="display: flex; justify-content: center; gap: 20px; margin-top: 30px;">
+                    <span style="font-family: 'Outfit'; font-size: 1.5rem; font-weight: 700; color: var(--text-main); background: #1E293B; padding: 10px 30px; border-radius: 8px;">COBOL</span>
+                    <span style="font-family: 'Outfit'; font-size: 1.5rem; font-weight: 700; color: var(--text-main); background: #1E293B; padding: 10px 30px; border-radius: 8px;">FORTRAN</span>
+                    <span style="font-family: 'Outfit'; font-size: 1.5rem; font-weight: 700; color: var(--text-main); background: #1E293B; padding: 10px 30px; border-radius: 8px;">AS/400 (RPG)</span>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>
